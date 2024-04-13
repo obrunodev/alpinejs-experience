@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+
+  <body>
+    <div x-data="{
+      taskName: '',
+      tasks: ['Job daily with team', 'Take pet to vet'],
+      createTask() {
+        this.tasks.push(this.taskName)
+        this.taskName = ''
+      },
+      removeTask(task) { this.tasks.splice(this.tasks.indexOf(task), 1) }
+    }">
+      <input type="text" x-model="taskName" x-on:keydown.enter="createTask">
+      <button x-on:click="createTask">Adicionar</button>
+      <ul>
+        <template x-for="task in tasks" :key="task">
+          <div>
+            <li x-text="task"></li>
+            <button x-on:click="removeTask(task)">Excluir</button>
+          </div>
+        </template> 
+      </ul>
+    </div>
+  </body>
+</html>

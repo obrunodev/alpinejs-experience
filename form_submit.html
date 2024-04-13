@@ -9,15 +9,13 @@
 
   <body>
     <div x-data="{
-      count: 10,
-      increment(value) {
-        this.count += value;
-      }
-    }">
-      <button x-on:click="count--">Decrement</button>
-      <span x-text="count"></span>
-      <button x-on:click="increment(1)">Increment 1</button>
-      <button x-on:click="increment(2)">Increment 2</button>
+      name: '',
+      send() { console.log(this.name) }
+     }">
+      <form action="" x-on:submit.prevent="send">
+        <input type="text" x-model="name">
+        <button type="submit">Enviar</button>
+      </form>
     </div>
   </body>
 </html>

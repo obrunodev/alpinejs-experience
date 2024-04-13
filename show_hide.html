@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
-
-<body>
-  <div class="container">
-    <div x-data="{ open: false }">
-      <p x-show="open">
-        Conteudo do x-show
-      </p>
-      <template x-if="!open">
-        <p>
-          Conteudo do template
+  <body>
+    <!-- x-cloak evita que o elemento apareca antes de receber o display none -->
+    <style>
+      [x-cloak] { display: none; }
+    </style>
+    <div class="container">
+      <div x-data="{ open: false }">
+        <p x-show="open" x-cloak>
+          Conteudo do x-show
         </p>
-      </template>
-      <button @click="open = !open">Toggle</button>
+        <template x-if="!open">
+          <p>
+            Conteudo do template
+          </p>
+        </template>
+        <button @click="open = !open">Toggle</button>
+      </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
